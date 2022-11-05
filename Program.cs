@@ -51,6 +51,9 @@ if ((intN1 > 99999) || (intN1 < 10000))
 } 
 //
 //doing the deal
-if (isPalindrome(intN1) == true) Console.WriteLine($"Число {intN1} является палиндромом"); else Console.WriteLine($"Число {intN1} не является палиндромом");
+if (isPalindrome(intN1) == true)
+    {Console.WriteLine($"Число {intN1} является палиндромом");}
+    else
+    {Console.WriteLine($"Число {intN1} не является палиндромом");}
 //
 // end of exec block
