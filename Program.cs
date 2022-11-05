@@ -6,7 +6,7 @@
 using System;
 
 //definition block
-// Filling the array with 10 powered in an index of the array items.. 1, 10, 100, etc..; 
+// Functuon for filling the array with 10 powered in an index of the array items.. 1, 10, 100, etc..; 
 int[] FillArray (int[] a)
 {
     a[0]=1;
