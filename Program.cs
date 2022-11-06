@@ -1,59 +1,51 @@
-﻿//Задача 19 Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-//14212 -> нет
-//12821 -> да
-//23432 -> да
+﻿//Задача 21
+//
+//Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+//
+//A (3,6,8); B (2,1,-7), -> 15.84
+//
+//A (7,-5, 0); B (1,-1,9) -> 11.53
 //
 using System;
+//
+Point A1 = new Point(3,6,8);
+Point B1 = new Point(2,1,-7);
+Point A2 = new Point(7,-5, 0);
+Point B2 = new Point(1,-1,9);
+//
+Vector I1 = new Vector(A1, B1);
+Vector I2 = new Vector(A2, B2);
+//
+Console.WriteLine($"Lenght of I1 = {I1.Length(),0:f2}");
+Console.WriteLine($"Lenght of I2 = {I2.Length(),0:f2}");
+//
+class Point
+{
+    private double x, y, z; 
+    public Point()  {x = 0; y = 0; z = 0;}
+    public Point(double X, double Y, double Z)  {x = X; y = Y; z = Z;}
+    public double X(){return x;}
+    public double Y(){return y;}
+    public double Z(){return z;}
+    public void SetX(double X){x = X;}
+    public void SetY(double Y){y = Y;}
+    public void SetZ(double Z){z = Z;}
+}
 
-//definition block
-// Functuon for filling the array with 10 powered in an index of the array items.. 1, 10, 100, etc..; 
-int[] FillArray (int[] a)
+class Vector:Point
 {
-    a[0]=1;
-    for (int i=1; i < a.Length; i++)
-        for (int j = 0; j < i; j++) a[i] = a[i-1] * 10;
-    return(a);
-}
-//
-// Function for checking if symmetrically placed digits are equal
-bool isPalindrome(int n)
-{
-    int l = 6, c = (l-1)/2, last_i = l-1; 
-    int[] a = new int[l];
-    a = FillArray(a);
-    for (int i = 0; i < c; i++)
-    {        
-        if(n % a[i+1] / a[i] != n % a[last_i-i] / a[last_i-i-1]) return false; //the first unequality forces returning the false
+    public Vector(Point From, Point To)
+    {
+        this.SetX(From.X() - To.X());
+        this.SetY(From.Y() - To.Y());
+        this.SetZ(From.Z() - To.Z());
     }
-    return true; //no unequalities => symmetrically placed digits are equal, returning true
+    public double Length()
+    {
+        return(Math.Sqrt(
+                        Math.Pow(this.X(), 2) + 
+                        Math.Pow(this.Y(), 2) + 
+                        Math.Pow(this.Z(), 2)
+                        ));        
+    }
 }
-//end of definition block
-//
-//+++++++++++++++++++++
-//
-//input block/////////////
-int intN1;
-Console.Clear();
-Console.Write("Введите 5-значное число ");
-intN1 = int.Parse(Console.ReadLine()!);
-//
-// end of input block/////////////
-//
-//=========================
-//
-//exec block
-//
-// Checking the entered..
-if ((intN1 > 99999) || (intN1 < 10000))
-{
-    Console.WriteLine("Ой, число не 5-значное ...");
-    return;
-} 
-//
-//doing the deal
-if (isPalindrome(intN1) == true)
-    {Console.WriteLine($"Число {intN1} является палиндромом");}
-    else
-    {Console.WriteLine($"Число {intN1} не является палиндромом");}
-//
-// end of exec block
