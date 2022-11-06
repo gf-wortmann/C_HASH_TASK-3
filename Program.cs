@@ -16,8 +16,8 @@ Point B2 = new Point(1,-1,9);
 Vector I1 = new Vector(A1, B1);
 Vector I2 = new Vector(A2, B2);
 //
-Console.WriteLine($"Lenght of I1 = {I1.Length(),0:f2}");
-Console.WriteLine($"Lenght of I2 = {I2.Length(),0:f2}");
+Console.WriteLine($"Length of I1 = {I1.Length(),0:f2}");
+Console.WriteLine($"Length of I2 = {I2.Length(),0:f2}");
 //
 class Point
 {
